@@ -50,3 +50,13 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# additional
+.vscode
+*.jpg
+*.mpo
+*.zip
+mpojoin
+mpojoin.exe
+
+/tests
