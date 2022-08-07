@@ -1,7 +1,7 @@
 UNAME := $(shell uname)
 
 ifeq ($(UNAME), Darwin)
-CC = $(CROSS_COMPILE)gcc -arch i386 -arch x86_64  -mmacosx-version-min=10.6
+CC = $(CROSS_COMPILE)gcc -arch x86_64  -mmacosx-version-min=10.10
 else
 CC = $(CROSS_COMPILE)gcc -mno-ms-bitfields
 endif
