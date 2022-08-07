@@ -269,6 +269,7 @@ search_app1( FILE *fp ) {
     long      tpos;
     int       num_marker = 0;
     uint32_t  end_of_app12 = 0;
+    uint32_t  end_of_app0  = 0;
     
     do {    
         marker = get_fu16( fp );
@@ -295,6 +296,7 @@ search_app1( FILE *fp ) {
                 
             case    0xFFE0:
                 debug_print("APP0  @ %08lX length %-7d", tpos - 2, length );
+                end_of_app0 = (uint32_t)(tpos + length);
                 debug_sig( fp );
                 break;
                 
@@ -356,6 +358,11 @@ search_app1( FILE *fp ) {
       
       } while( marker != 0xFFD9 );
 
+      // fallback
+      if(end_of_app12 == 0) {
+        end_of_app12 = end_of_app0;
+      }
+  
       return(end_of_app12);
 }
 
